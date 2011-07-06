@@ -12,27 +12,20 @@ describe Receipt do
     receipt.add_line_item(music_cd)
     receipt.add_line_item(chocolate_bar)
     receipt.line_items.length.should == 3
+
   end
   
   it "should generate line items when products are added" do
     book = Product.new("book", 10, "N")
     music_cd = Product.new("music CD", 20, "N")
     chocolate_bar = Product.new("chocolate bar", 1, "N")
-    receipt = Receipt.new
+    receipt = Receipt.new 
     receipt.add_line_item(book)
     receipt.add_line_item(music_cd)
     receipt.add_line_item(chocolate_bar)
-    receipt.line_items[0].description.should == "book"
-    receipt.line_items[1].description.should == "music CD"
-    receipt.line_items[2].description.should == "chocolate bar"
+    receipt.line_items
+
   end
   
-  it "should list basic sales tax applied to non-exempt non-imported goods" do
-    music_cd = Product.new("music CD", 20, "N")
-    receipt = Receipt.new
-    receipt.add_line_item(music_cd)
-    receipt.line_items[0].tax.should == 2
-    receipt.line_items[0].price.should == 22
-  end
 end
 
