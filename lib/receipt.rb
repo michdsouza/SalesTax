@@ -12,12 +12,7 @@ class Receipt
     line_item = LineItem.new(product)
     @line_items.push(line_item)
   end
-  
-  #def calculate_sales_tax(product)
-  #  return 2
-    #return (product.price * BASIC_SALES_TAX_RATE)/100
-  #end
-    
+     
   def list_line_items
     return @line_items.collect { |line_item| line_item.build_output }.join(" ")
   end

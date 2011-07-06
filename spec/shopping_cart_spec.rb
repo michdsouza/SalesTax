@@ -9,7 +9,7 @@ describe ShoppingCart do
 
   it "should allow an item to be added to it" do
     cart = ShoppingCart.new
-    book = Product.new("book", "10", "N")
+    book = Product.new("book", "10")
     cart.add_product(book)
     cart.product.should be book
   end
