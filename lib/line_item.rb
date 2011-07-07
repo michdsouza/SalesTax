@@ -3,6 +3,7 @@ require 'product.rb'
 class LineItem
 
   BASIC_TAX_RATE = 10
+  ROUNDING_TO = 0.05
 
   def initialize(product)
     @quantity = 1
@@ -13,10 +14,10 @@ class LineItem
 
 
   def calculate_tax(product)
-    if ( product.classification == "medicine" || product.classification == "book" )
+    if ( product.classification == "medicine" || product.classification == "book" || product.classification == "food" )
        return 0
     else 
-       return product.calculate_tax(BASIC_TAX_RATE)
+       return product.calculate_tax(BASIC_TAX_RATE, ROUNDING_TO)
     end
   end
 

@@ -13,8 +13,8 @@ class Product
     return "not medicine"
   end
 
-  def calculate_tax(tax_rate)
-    return (@price * tax_rate)/100
+  def calculate_tax(tax_rate, rounding_to)
+    return ((((@price * tax_rate).to_f/100)/rounding_to).ceil) * rounding_to
   end
 
 		

@@ -9,6 +9,6 @@ describe Product do
 
   it "should calculate basic tax" do
     blanket = Product.new("blanket", 10)
-    blanket.calculate_tax(10).should == 1
+    blanket.calculate_tax(10, 0.05).should == 1
   end
 end
