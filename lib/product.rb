@@ -1,21 +1,20 @@
 class Product
   attr_reader :description, :price, :classification # bogus if these are only used by the tests..?
 
-  def initialize(description, price)
+  def initialize(description, price, classification)
     @description = description
     @price = price
-    @classification = classify
-
+    @classification = classification
   end
 
-  def classify
-    #return "medicine" #will be calculated by some logic that maps product.description to a bunch of product classifications
-    return "not medicine"
+  def price_with_tax(rounding_to)
+   return @price + calculate_tax(rounding_to)
   end
 
-  def calculate_tax(tax_rate, rounding_to)
-    return ((((@price * tax_rate).to_f/100)/rounding_to).ceil) * rounding_to
+  def calculate_tax(rounding_to)
+    return ((((@price * @classification.tax_rate).to_f/100)/rounding_to).ceil) * rounding_to
   end
-
-		
+	
 end
+
+# kill off the attr_readers.
