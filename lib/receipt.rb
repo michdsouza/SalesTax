@@ -12,9 +12,9 @@ class Receipt
      
   def list_line_items
     line_item_data = @line_items.collect do  |line_item|
-       "1 " + line_item.description + " " + line_item.price_with_tax(ROUNDING_TO).to_s
+       "1 " + line_item.description + ": " + line_item.price_with_tax(ROUNDING_TO).to_s
     end
-    line_item_date.join("\n")
+    line_item_data.join("\n")
   end
 end
 

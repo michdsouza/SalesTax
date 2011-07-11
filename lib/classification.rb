@@ -7,7 +7,7 @@ class Classification
   IMPORT_TAX_RATE = 5
 
   def self.BOOK		#static objects
-   Classification.new(TAX_EXEMPT_RATE)
+   Classification.new(TAX_EXEMPT_RATE)  # do you have to do "level" of decoration before doing another "level"?
   end
 
   def self.MEDICINE
@@ -33,5 +33,4 @@ class Classification
 
 end
 
-# Not a lot of behavior just yet.
-# What is the reason for this class to exist? What is it's intended final behavior!
+
