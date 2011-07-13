@@ -24,7 +24,7 @@ describe Product do
 
  it "should calculate price (with tax) for an imported, exempt product" do
     fancy_chocolates = Product.new("box of imported chocolates", 11.25, Classification.IMPORTED(Classification.FOOD))
-    fancy_chocolates.calculate_tax(0.05).should == 0.6 #floating point crap
+    fancy_chocolates.calculate_tax(0.05).should == 0.6 #still need this...for tax summation
     fancy_chocolates.price_with_tax(0.05).should == 11.85
   end
 

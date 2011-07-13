@@ -20,7 +20,7 @@ describe Receipt do
     receipt.add_line_item(perfume)
     receipt.add_line_item(pills)
     receipt.add_line_item(imported_chocolates)
-    receipt.list_line_items.should == "1 imported bottle of perfume: 32.19\n1 bottle of perfume: 20.89\n1 packet of headache pills: 9.75\n1 imported box of chocolates: 11.85"
+    receipt.list_line_items.should == "1 imported bottle of perfume: 32.19\n1 bottle of perfume: 20.89\n1 packet of headache pills: 9.75\n1 box of imported chocolates: 11.85"
   end
 end
 
