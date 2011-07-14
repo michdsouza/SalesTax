@@ -1,19 +1,18 @@
 class Product
   attr_reader :description # just needed for receipt formatting. Ugly. Permanent?
 
-  def initialize(description, price, classification)
+  def initialize(description, price, tax)
     @description = description
     @price = price
-    @classification = classification
+    @tax = tax
   end
 
-  def price_with_tax(rounding_to)
-   return ("%.2f" %(@price + calculate_tax(rounding_to))).to_f
+  def price_with_tax
+   return ("%.2f" %(@price + calculate_tax)).to_f
   end
 
- def calculate_tax(rounding_to)
-   return ("%.2f" %(((((@price * @classification.tax_rate).to_f/100)/rounding_to).ceil) * rounding_to)).to_f
-   #return ((((@price * @classification.tax_rate).to_f/100)/rounding_to).ceil) * rounding_to
+  def calculate_tax
+   @tax.calculate_tax(@price)
   end
 	
 end
