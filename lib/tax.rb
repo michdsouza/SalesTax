@@ -7,20 +7,12 @@ class Tax
   IMPORT_TAX_RATE = 5
   ROUNDING_TO = 0.05
 
-  def self.BOOK(original_tax)
+  def self.EXEMPT(original_tax)
    #Tax.new(original_tax, TAX_EXEMPT_RATE)
    Tax.new(original_tax.tax_rate + TAX_EXEMPT_RATE)
   end
 
-  def self.MEDICINE(original_tax)
-   Tax.new(original_tax.tax_rate + TAX_EXEMPT_RATE)
-  end
-
-  def self.FOOD(original_tax)
-   Tax.new(original_tax.tax_rate + TAX_EXEMPT_RATE)
-  end
-
-  def self.OTHER(original_tax)
+  def self.BASIC(original_tax)
    Tax.new(original_tax.tax_rate + BASIC_TAX_RATE)
   end
 
