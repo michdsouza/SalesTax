@@ -11,7 +11,7 @@ class Product
    return ("%.2f" %(@price + calculate_tax)).to_f
   end
 
-  def calculate_tax
+  def calculate_tax # should this be duplicated with Tax??
    @tax.calculate_tax(@price)
   end
 	
