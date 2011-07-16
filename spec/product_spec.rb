@@ -3,6 +3,12 @@ require 'tax.rb'
 
 describe Product do
 
+it "should create a new product with no tax" do
+    blanket = Product.new("blanket", 10, Tax.EMPTY)
+    blanket.calculate_tax.should == 0
+    blanket.price_with_tax.should == 10
+  end
+
   it "should calculate basic tax for a product" do
     blanket = Product.new("blanket", 10, Tax.BASIC(Tax.EMPTY))
     blanket.calculate_tax.should == 1
@@ -24,7 +30,6 @@ describe Product do
     fancy_blanket.calculate_tax.should == 3.0
     fancy_blanket.price_with_tax.should == 22.95
   end
-
 
  it "should calculate price (with tax) for an imported, exempt product" do
     fancy_chocolates = Product.new("box of imported chocolates", 11.25, Tax.IMPORTED(Tax.EXEMPT(Tax.EMPTY)))
