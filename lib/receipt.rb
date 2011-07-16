@@ -1,5 +1,7 @@
 class Receipt
   
+  attr_reader :line_items # temporary  
+
   def initialize
     @line_items = []
   end
