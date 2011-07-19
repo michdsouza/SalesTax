@@ -19,7 +19,7 @@ class Tax
    Tax.new(original_tax, IMPORT_TAX_RATE)
   end
 
-  def self.EMPTY #new class with an explicit calculate_tax method that returns just a 0
+  def self.EMPTY 	#new class with an explicit calculate_tax method that returns just a 0
    NullTax.new
   end
 

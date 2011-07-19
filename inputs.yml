@@ -2,17 +2,23 @@
     - product: book
       quantity: 1
       price: 12.49
-      tax category: EXEMPT
+      tax categories:
+        - EXEMPT
+        - BASIC
+        - IMPORTED
 
     - product: music CD
       quantity: 1
       price: 14.99
-      tax category: BASIC
+      tax categories:
+        - BASIC
 
     - product: chocolate bar
       quantity: 1
       price: 0.85
-      tax category: EXEMPT
+      tax categories:
+        - EXEMPT
+
 
 #
 #Input 2:
