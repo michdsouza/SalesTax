@@ -12,7 +12,7 @@ class Input_Reader
   receipt = Receipt.new
   parsed_inputs.each do |input|
    input["tax categories"].each do |tax_category|
-     receipt.add_line_item(Product.new(input["product"], input["price"], Tax.BASIC(Tax.EMPTY)))
+     receipt.add_line_item(Product.new(input["product"], input["price"], Tax.Applicable_Taxes([10])))
      puts tax_category
      puts taxes[tax_category.to_s]
    end
