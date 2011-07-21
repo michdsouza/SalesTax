@@ -1,22 +1,15 @@
 class Tax
 
   attr_reader :original_tax, :tax_rate # this should go away?
-    
-  TAX_EXEMPT_RATE = 0
-  BASIC_TAX_RATE = 10
-  IMPORT_TAX_RATE = 5
+  
   ROUNDING_TO = 0.05
 
-  def self.EXEMPT(original_tax)
-   Tax.new(original_tax, TAX_EXEMPT_RATE)
-  end
-
-  def self.BASIC(original_tax)
-    Tax.new(original_tax, BASIC_TAX_RATE)   
-  end
-
-  def self.IMPORTED(original_tax)
-   Tax.new(original_tax, IMPORT_TAX_RATE)
+  def self.Applicable_Taxes(tax_rates)
+      original_tax = NullTax.new
+      tax_rates.each do |tax_rate|
+      	original_tax = Tax.new(original_tax, tax_rate)
+      end
+      return original_tax
   end
 
   def self.EMPTY 	#new class with an explicit calculate_tax method that returns just a 0
