@@ -1,6 +1,4 @@
 class Receipt
-  
-  attr_reader :line_items # temporary
 
   def initialize
     @line_items = []
@@ -16,7 +14,7 @@ class Receipt
      
   def list_line_items
     line_item_data = @line_items.collect do  |line_item|
-       "1 " + line_item.description + ": " + line_item.price_with_tax.to_s
+       "1 " + line_item.format_description + ": " + line_item.price_with_tax.to_s
     end
     line_item_data.join("\n")
   end

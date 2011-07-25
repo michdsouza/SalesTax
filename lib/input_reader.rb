@@ -1,5 +1,5 @@
 require 'yaml'
-require './product.rb' #apparently, this is how it should be?
+require './product.rb' #How should this look?
 require './tax.rb'
 require './receipt.rb'
 

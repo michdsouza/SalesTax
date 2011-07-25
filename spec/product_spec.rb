@@ -33,7 +33,7 @@ it "should create a new product with no tax" do
 
  it "should calculate price (with tax) for an imported, exempt product" do
     fancy_chocolates = Product.new("box of imported chocolates", 11.25, Tax.Applicable_Taxes([5, 0]))
-    fancy_chocolates.calculate_tax.should == 0.6 #still need this...for tax summation
+    fancy_chocolates.calculate_tax.should == 0.6   #used in tax summation
     fancy_chocolates.price_with_tax.should == 11.85
   end
 

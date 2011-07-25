@@ -3,6 +3,7 @@ TO DO LIST:
 2. Refactor input reader to isolate data access layer
 3. Ensure all tests are testing functionality correctly
 4. Refactor tests: setup and teardown
+5. Remove all comments / attr_readers and get clarity from Pato
 
 
 PROBLEM TWO: SALES TAXES

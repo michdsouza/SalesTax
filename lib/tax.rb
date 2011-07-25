@@ -1,6 +1,6 @@
 class Tax
 
-  attr_reader :original_tax, :tax_rate # this should go away?
+  attr_reader :original_tax # How is this accessed from outside?
   
   ROUNDING_TO = 0.05
 
