@@ -1,33 +1,62 @@
----
+--- 
+-
     - product: book
       quantity: 1
       price: 12.49
       tax categories:
-        - EXEMPT
-        - BASIC
-        - IMPORTED
+          - EXEMPT
 
     - product: music CD
       quantity: 1
       price: 14.99
       tax categories:
-        - BASIC
+          - BASIC
 
     - product: chocolate bar
       quantity: 1
       price: 0.85
       tax categories:
-        - EXEMPT
+          - EXEMPT
 
+- 
+    - product: imported box of chocolates
+      quantity: 1
+      price: 10.00
+      tax categories:
+          - EXEMPT
+          - IMPORTED            
 
-#
-#Input 2:
-#1 imported box of chocolates at 10.00
-#1 imported bottle of perfume at 47.50
-#
-#Input 3:
-#1 imported bottle of perfume at 27.99
-#1 bottle of perfume at 18.99
-#1 packet of headache pills at 9.75
-#1 box of imported chocolates at 11.25
+    - product: imported bottle of perfume
+      quantity: 1
+      price: 47.50
+      tax categories:
+          - BASIC
+          - IMPORTED  
 
+-
+    - product: imported bottle of perfume
+      quantity: 1
+      price: 27.99
+      tax categories:
+          - BASIC
+          - IMPORTED   
+
+    - product: bottle of perfume
+      quantity: 1
+      price: 18.99
+      tax categories:
+          - BASIC 
+
+    - product: packet of headache pills
+      quantity: 1
+      price: 9.75
+      tax categories:
+          - EXEMPT            
+
+    - product: box of imported chocolates
+      quantity: 1
+      price: 11.25
+      tax categories:
+          - EXEMPT
+          - IMPORTED
+...            

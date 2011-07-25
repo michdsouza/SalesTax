@@ -20,7 +20,7 @@ class Receipt
   end
 
   def list_tax_total
-    return "Sales Taxes: " + @sales_tax_total.to_s
+    return "Sales Taxes: " +  ("%.2f" %(@sales_tax_total.to_f))
   end
 
   def list_receipt_total
