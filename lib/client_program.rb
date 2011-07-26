@@ -1,12 +1,12 @@
-require './data_connector.rb'
+require './data_connection.rb'
 require './product.rb' #How should this look?
 require './tax.rb'
 require './receipt.rb'
 
 class Client_Program
-  data_connector = Data_Connector.new
-  shopping_carts = data_connector.shopping_carts
-  tax_rates = data_connector.tax_rates
+  data_connection = Data_Connection.new
+  shopping_carts = data_connection.shopping_carts
+  tax_rates = data_connection.tax_rates
   
   shopping_carts.each do |shopping_cart|
     receipt = Receipt.new
