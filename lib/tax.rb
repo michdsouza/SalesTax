@@ -4,7 +4,7 @@ class Tax
   
   ROUNDING_TO = 0.05
 
-  def self.Applicable_Taxes(tax_rates)
+  def self.applicable_taxes(tax_rates)
       original_tax = NullTax.new
       tax_rates.each do |tax_rate|
       	original_tax = Tax.new(original_tax, tax_rate)
@@ -21,7 +21,6 @@ class Tax
    return original_tax.calculate_tax(price) + new_tax
   end
 
-  private		#so that no one else can create any new taxations
   def initialize(original_tax, tax_rate)
     @original_tax = original_tax
     @tax_rate = tax_rate

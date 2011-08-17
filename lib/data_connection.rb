@@ -1,6 +1,6 @@
 require 'yaml'
 
-class Data_Connection
+class DataConnection
   
   def shopping_carts
     (YAML::parse(File.open('../inputs.yml'))).transform

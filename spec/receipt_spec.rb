@@ -9,17 +9,30 @@ describe Receipt do
    EXEMPT_SALES_TAX_RATE = 0
 
   it "should format results for one added product" do
-    imported_card = Product.new("greeting card", 21.40, Tax.Applicable_Taxes([BASIC_SALES_TAX_RATE, IMPORTED_SALES_TAX_RATE]))
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, BASIC_SALES_TAX_RATE)
+    tax = Tax.new(tax, IMPORTED_SALES_TAX_RATE)
+    imported_card = Product.new("greeting card", 21.40, tax)
     receipt = Receipt.new
     receipt.add_line_item(imported_card)
     receipt.list_line_items.should == "1 greeting card: 24.65"
   end
 
   it "should generate line items when several products are added" do
-    imported_perfume = Product.new("imported bottle of perfume", 27.99, Tax.Applicable_Taxes([BASIC_SALES_TAX_RATE, IMPORTED_SALES_TAX_RATE]))
-    perfume = Product.new("bottle of perfume", 18.99, Tax.Applicable_Taxes([BASIC_SALES_TAX_RATE]))
-    pills = Product.new("packet of headache pills", 9.75, Tax.Applicable_Taxes([EXEMPT_SALES_TAX_RATE]))
-    imported_chocolates = Product.new("box of imported chocolates", 11.25, Tax.Applicable_Taxes([IMPORTED_SALES_TAX_RATE, EXEMPT_SALES_TAX_RATE]))
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, BASIC_SALES_TAX_RATE)
+    tax = Tax.new(tax, IMPORTED_SALES_TAX_RATE)    
+    imported_perfume = Product.new("imported bottle of perfume", 27.99, tax)
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, BASIC_SALES_TAX_RATE)
+    perfume = Product.new("bottle of perfume", 18.99, tax)
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, EXEMPT_SALES_TAX_RATE)
+    pills = Product.new("packet of headache pills", 9.75, tax)
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, IMPORTED_SALES_TAX_RATE)    
+    tax = Tax.new(tax, EXEMPT_SALES_TAX_RATE)
+    imported_chocolates = Product.new("box of imported chocolates", 11.25, tax)
     receipt = Receipt.new
     receipt.add_line_item(imported_perfume)
     receipt.add_line_item(perfume)
@@ -29,8 +42,14 @@ describe Receipt do
   end
 
   it "should generate correct sales tax total when several products are added" do
-    imported_chocolates = Product.new("imported box of chocolates", 10.00, Tax.Applicable_Taxes([IMPORTED_SALES_TAX_RATE, EXEMPT_SALES_TAX_RATE]))
-    imported_perfume = Product.new("imported bottle of perfume", 47.50, Tax.Applicable_Taxes([BASIC_SALES_TAX_RATE, IMPORTED_SALES_TAX_RATE]))
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, IMPORTED_SALES_TAX_RATE)    
+    tax = Tax.new(tax, EXEMPT_SALES_TAX_RATE)
+    imported_chocolates = Product.new("imported box of chocolates", 10.00, tax)
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, BASIC_SALES_TAX_RATE)    
+    tax = Tax.new(tax, IMPORTED_SALES_TAX_RATE)
+    imported_perfume = Product.new("imported bottle of perfume", 47.50, tax)
     receipt = Receipt.new
     receipt.add_line_item(imported_chocolates)
     receipt.add_line_item(imported_perfume)
@@ -38,10 +57,20 @@ describe Receipt do
   end
 
   it "should generate receipt total when several products are added" do
-    imported_perfume = Product.new("imported bottle of perfume", 27.99, Tax.Applicable_Taxes([IMPORTED_SALES_TAX_RATE, BASIC_SALES_TAX_RATE]))
-    perfume = Product.new("bottle of perfume", 18.99, Tax.Applicable_Taxes([BASIC_SALES_TAX_RATE]))
-    pills = Product.new("packet of headache pills", 9.75, Tax.Applicable_Taxes([EXEMPT_SALES_TAX_RATE]))
-    imported_chocolates = Product.new("box of imported chocolates", 11.25, Tax.Applicable_Taxes([EXEMPT_SALES_TAX_RATE, IMPORTED_SALES_TAX_RATE]))
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, IMPORTED_SALES_TAX_RATE)    
+    tax = Tax.new(tax, BASIC_SALES_TAX_RATE)
+    imported_perfume = Product.new("imported bottle of perfume", 27.99, tax)
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, BASIC_SALES_TAX_RATE)    
+    perfume = Product.new("bottle of perfume", 18.99, tax)
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, EXEMPT_SALES_TAX_RATE)    
+    pills = Product.new("packet of headache pills", 9.75, tax)
+    tax = Tax.EMPTY
+    tax = Tax.new(tax, EXEMPT_SALES_TAX_RATE)    
+    tax = Tax.new(tax, IMPORTED_SALES_TAX_RATE)    
+    imported_chocolates = Product.new("box of imported chocolates", 11.25, tax)
     receipt = Receipt.new
     receipt.add_line_item(imported_perfume)
     receipt.add_line_item(perfume)     
