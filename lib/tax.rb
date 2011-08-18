@@ -1,24 +1,14 @@
 class Tax
-
-  attr_reader :original_tax # How is this accessed from outside?
   
   ROUNDING_TO = 0.05
 
-  def self.applicable_taxes(tax_rates)
-      original_tax = NullTax.new
-      tax_rates.each do |tax_rate|
-      	original_tax = Tax.new(original_tax, tax_rate)
-      end
-      return original_tax
-  end
-
-  def self.EMPTY 	#new class with an explicit calculate_tax method that returns just a 0
+  def self.EMPTY
    NullTax.new
   end
 
   def calculate_tax(price)
    new_tax = ("%.2f" %((((@tax_rate.to_f/100 * price)/ROUNDING_TO).ceil) * ROUNDING_TO)).to_f
-   return original_tax.calculate_tax(price) + new_tax
+   return @original_tax.calculate_tax(price) + new_tax
   end
 
   def initialize(original_tax, tax_rate)

@@ -8,10 +8,8 @@ TO DO LIST:
 2. Should round down to nearest 0.05, when lower than 0.05 [23.33, for example]
 3. Should round up to nearest 0.05, when higher than 0.05 [23.37, for example. Don't remember the rules properly, but you get the idea]
 
- 
-
 2. Refactor tests: setup and teardown
-3. Remove all comments / attr_readers and get clarity from Pato (do this for original_tax)
+
 
 
 PROBLEM TWO: SALES TAXES
