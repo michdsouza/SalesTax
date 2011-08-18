@@ -1,13 +1,17 @@
 require 'tax.rb'
+require 'product.rb'
 
 describe Tax do
 
   before (:all) do
     @tax = Tax.EMPTY
     @price = 10
-    @imported_tax = Tax.new(@tax, 5)
-    @basic_tax = Tax.new(@tax, 10)
-    @exempt_tax = Tax.new(@tax, 0)
+    IMPORTED_RATE = 5
+    BASIC_RATE = 10
+    EXEMPT_RATE = 0
+    @imported_tax = Tax.new(@tax, IMPORTED_RATE)
+    @basic_tax = Tax.new(@tax, BASIC_RATE)
+    @exempt_tax = Tax.new(@tax, EXEMPT_RATE)
   end
 
 it "should add no tax for an unspecified tax type" do
@@ -18,9 +22,26 @@ it "should calculate tax for a basic product" do
     @basic_tax.calculate_tax(@price).should == 1
   end
 
-it "should calculate tax for a basic, imported product" do
-    tax = Tax.new(@basic_tax, 5)
+ it "should calculate tax for an imported product" do
+    tax = Tax.new(@basic_tax, IMPORTED_RATE)
     tax.calculate_tax(@price).should == 1.5
+  end
+
+ it "should calculate tax for a product regardless of taxation order" do
+    tax = Tax.new(@imported_tax, BASIC_RATE)
+    tax.calculate_tax(@price).should == 1.5
+  end
+
+ it "should calculate tax for an imported, exempt product" do
+    tax = Tax.new(@imported_tax, EXEMPT_RATE)
+    tax.calculate_tax(@price).should == 0.5
+  end
+
+ it "should round up tax calculated when closer to nearest 5 cents highest" do
+    tax = Tax.new(@imported_tax, BASIC_RATE)
+    tax.calculate_tax(19.25).should == 2.90
+    #tax = Tax.new(@imported_tax, BASIC_RATE)
+    #tax.calculate_tax(18.8).should == ???
   end
 
 end

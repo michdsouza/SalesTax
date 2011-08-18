@@ -1,12 +1,8 @@
 TO DO LIST:
-1. Ensure all tests are testing functionality correctly
-     - Test variety of taxations in tax_spec, not product_spec.
-     - product spec can just be one test for calculate_tax
-
-1b) Tax spec:
-2. Should round down to nearest 0.05, when lower than 0.05 [23.33, for example]
-3. Should round up to nearest 0.05, when higher than 0.05 [23.37, for example. Don't remember the rules properly, but you get the idea]
-
+a) Rounding problem with recursive logic
+10 % of 19.25 = 1.925 => 1.95
+5 % of 19.25 = 0.962 = > 1.0
+Total = 2.887 => 2.90 (but get 2.95)
 
 PROBLEM TWO: SALES TAXES
 
