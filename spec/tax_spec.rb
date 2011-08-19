@@ -37,11 +37,6 @@ it "should calculate tax for a basic product" do
     tax.calculate_tax(@price).should == 0.5
   end
 
- it "should round up tax calculated when closer to nearest 5 cents highest" do
-    tax = Tax.new(@imported_tax, BASIC_RATE)
-    tax.calculate_tax(19.25).should == 2.90
-    #tax = Tax.new(@imported_tax, BASIC_RATE)
-    #tax.calculate_tax(18.8).should == ???
-  end
+
 
 end

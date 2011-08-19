@@ -1,5 +1,7 @@
 class Product
 
+  ROUNDING_TO = 0.05
+
   def initialize(description, price, tax)
     @description = description
     @price = price
@@ -15,7 +17,8 @@ class Product
   end
 
   def calculate_tax
-   @tax.calculate_tax(@price)
+   raw_tax = @tax.calculate_tax(@price)
+   ("%.2f" %(((raw_tax/ROUNDING_TO).ceil) * ROUNDING_TO)).to_f
   end
 	
 end
