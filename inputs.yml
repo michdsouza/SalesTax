@@ -2,7 +2,7 @@
 -
     - product: book
       quantity: 1
-      price: 12.49
+      price: 12.50
       tax categories:
           - EXEMPT
 

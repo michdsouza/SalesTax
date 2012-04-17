@@ -1,6 +1,10 @@
-require 'rspec/core/rake_task'
+require 'saikuro_treemap'
 
-RSpec::Core::RakeTask.new(:spec)
-
-task :default => :spec
+namespace :metrics do
+  desc 'generate ccn treemap'
+  task :ccn_treemap do
+    SaikuroTreemap.generate_treemap :code_dirs => ['lib']
+    `open reports/saikuro_treemap.html`
+  end
+end
 
